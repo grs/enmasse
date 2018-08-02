@@ -1127,7 +1127,7 @@ describe('broker configuration', function() {
     });
 
     it('creates lots of queues on associated brokers', function (done) {
-        this.timeout(40000);
+        this.timeout(60000);
         var router = routers.new_router();
         var broker_a = new MockBroker('broker_a');
         var broker_b = new MockBroker('broker_b');
@@ -1143,7 +1143,7 @@ describe('broker configuration', function() {
                 broker_a.verify_addresses(desired.filter(function (a) { return a.allocated_to === 'broker_a'; }));
                 broker_b.verify_addresses(desired.filter(function (a) { return a.allocated_to === 'broker_b'; }));
                 done();
-            }, 30000/*30 second wait for propagation*/);//TODO: add ability to be notified of propagation in some way
+            },50000/*50 second wait for propagation*/);//TODO: add ability to be notified of propagation in some way
         }).catch(done);
     });
 });
